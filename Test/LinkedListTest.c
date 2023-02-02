@@ -98,6 +98,27 @@ void TestIndexOfFail(){
     DestroyList();
 }
 
+void TestWithRandomInsert(){
+    int a = 10, b = 202, c = 192, d = 282, e = 231, f = 12, g = 45;
+    InitList((compare) compare_int32_t);
+    Add(&a);
+    Add(&b);
+    Add(&c);
+    Add(&d);
+    Add(&e);
+    Add(&f);
+    Add(&g);
+
+    int result = IndexOf(&d);
+
+    InsertNodeBeforeTarget(&d);
+
+    result = IndexOf(&d);
+    int expected = 5;
+    TestList(listHolder, &expected, &result, "Add Multiple Values");
+    DestroyList();
+}
+
 //------------------------------------INSERT BEFORE TEST------------------------------------
 
 void InsertBeforeTest(){
