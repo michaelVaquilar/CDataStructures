@@ -15,27 +15,37 @@
 #include <stdbool.h>
 #include "../include/LinkedList.h"
 
-///Stack structure that holds our Queue which is an implementation of our linkedlist.
+/**
+ * Stack structure that holds our Queue which is an implementation of our linkedlist.
+ */
 typedef struct Queue{
     int Count;
     LIST *list;
 }QUEUE;
 
-/// Initializes our queue and allocates memory for the queue and list.
-/// \param Compare a compare function for the generic data type.
-/// \return true if intialized properly, false otherwise.
+/**
+ * Initializes our queue and allocates memory for the queue and list.
+ * @param Compare a compare function for the generic data type.
+ * @return true if intialized properly, false otherwise.
+ */
 bool InitQueue(compare Compare);
 
-/// Add's an item to the end of the queue.
-/// \param item void * item to add.
+/**
+ * Add's an item to the end of the queue.
+ * @param item void * item to add.
+ */
 void Enqueue(void *item);
 
-/// Dequeues the item at the front of the list (removes the first item).
-/// \return the item removed.
+/**
+ * Dequeues the item at the front of the list (removes the first item).
+ * @return the item removed.
+ */
 void* Dequeue();
 
-/// Checks if the queue is empty.
-/// \return true if empty, false otherwise.
+/**
+ * Checks if the queue is empty.
+ * @return true if empty, false otherwise.
+ */
 bool isEmpty();
 
 #endif //DATASTRUCTURES_QUEUE_H
