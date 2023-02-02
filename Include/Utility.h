@@ -9,6 +9,10 @@
 #ifndef DATASTRUCTURES_UTILITY_H
 #define DATASTRUCTURES_UTILITY_H
 
+#include "../Include/LinkedList.h"
+#include "../Include/Queue.h"
+#include "../Include/Stack.h"
+
 /// Compares two 32 bit integers to each-other.
 /// \param element1 void pointer to the first integer
 /// \param element2 void pointer to the second integer
@@ -50,5 +54,38 @@ int compare_char(const void *element1, const void *element2);
 /// \param element2 void pointer to the second string.
 /// \return int, 1 when the first element is greater than the second, -1 when the first element is less than the second, 0 when both elements are equal.
 int compare_string(const void *element1, const void *element2);
+
+/// Compares to int arrays to see if they are similar.
+/// \param a first int array.
+/// \param b second int array.
+/// \return 0 if not, 1 if equal.
+int compareIntArrays(int a[], int b[]);
+
+/// Small method for a list unit test, checks if two objects are equal, if so they passed.
+/// \param expected, the expected output
+/// \param actual, the actual output
+/// \param testName, the name of the test
+void TestList(LIST *listHolder, void *expected, void *actual, const char* testName);
+
+/// Small method for a list Queue test, checks if two objects are equal, if so they passed.
+/// \param expected, the expected output
+/// \param actual, the actual output
+/// \param testName, the name of the test
+void TestQueue(QUEUE *queue, void *expected, void *actual, const char* testName);
+
+/// Small method for a Stack unit test, checks if two objects are equal, if so they passed.
+/// \param expected, the expected output
+/// \param actual, the actual output
+/// \param testName, the name of the test
+void TestStack(STACK *stack, void *expected, void *actual, const char* testName);
+
+/// Generates a random 32 bit int.
+/// \return randomly generated int.
+int randomInt();
+
+/// Converts a int LinkedList into an int array
+/// \param listHolder the list to convert into an array
+/// \return int array
+int * ToArray(LIST *listHolder);
 
 #endif //DATASTRUCTURES_UTILITY_H

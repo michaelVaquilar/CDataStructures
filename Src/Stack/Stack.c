@@ -16,6 +16,7 @@
 
 bool initialized = false;
 extern STACK *ourStack;
+LIST *list;
 
 void UpdateCount(){
     ourStack->Count = ourStack->list->count;
@@ -24,8 +25,9 @@ void UpdateCount(){
 bool InitStack(compare Compare){
     initialized = true;
     ourStack = (STACK *)(1, sizeof(STACK));
-    if(ourStack == NULL && !InitList(Compare))
+    if(ourStack == NULL || !InitList(Compare))
         return false;
+    ourStack->list = list;
     return true;
 }
 
