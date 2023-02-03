@@ -14,11 +14,11 @@
 bool initialized = false; //tells us if the user initialized the list (allocating the memory)
 extern LIST *list; //external holder for the list. The user must create this.
 
-bool InitList(compare Compare){
+LIST* InitList(compare Compare){
     initialized = true;
     list = calloc(1, sizeof(LIST));
     if(list == NULL){
-        return false;
+        return NULL;
     }
     list->CompareTo = Compare;
     return true;

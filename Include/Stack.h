@@ -31,9 +31,9 @@ void UpdateCount();
 /**
  * Initializes our stack and allocates memory for the queue and list.
  * @param Compare a compare function for the generic data type.
- * @return true if intialized properly, false otherwise.
+ * @return pointer to the stack made, NULL if it couldn't be made.
  */
-bool InitStack(compare Compare);
+STACK* InitStack(compare Compare);
 
 /**
  * Checks if the stack is empty.
@@ -53,5 +53,10 @@ void *Pop();
  * @return true if the item was added onto the stack, false otherwise.
  */
 bool Push(void *data);
+
+/**
+ * Destroys the stack, aka freeing the memory.
+ */
+void DestroyStack();
 
 #endif //DATASTRUCTURES_STACK_H

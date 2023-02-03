@@ -20,7 +20,7 @@ LIST *listHolder;
 void TestAddOne(){
     int i = 10;
     void *p = &i;
-    InitList((compare) compare_int32_t);
+    listHolder = InitList((compare) compare_int32_t);
     Add(&i);
     void *result = Get(0);
     TestList(listHolder, p, result, "Add One Value");
@@ -30,7 +30,7 @@ void TestAddOne(){
 
 void TestMultipleValue(){
     int a = 10, b = 202, c = 192, d = 282, e = 231, f = 12, g = 45;
-    InitList((compare) compare_int32_t);
+    listHolder = InitList((compare) compare_int32_t);
     Add(&a);
     Add(&b);
     Add(&c);
@@ -48,7 +48,7 @@ void TestWholeList(){
     int a = 10, b = 202, c = 192, d = 282, e = 231, f = 12, g = 45;
     int expected[7] = {10,202,192,282,231,12,45};
 
-    InitList((compare) compareIntArrays);
+    listHolder = InitList((compare) compareIntArrays);
     Add(&a);
     Add(&b);
     Add(&c);
@@ -70,7 +70,7 @@ void TestIndexOf(){
     int x = randomInt();
     int y = randomInt();
     int z = randomInt();
-    InitList((compare) compare_int32_t);
+    listHolder = InitList((compare) compare_int32_t);
     Add(&i);
     Add(&x);
     Add(&y);
@@ -87,7 +87,7 @@ void TestIndexOfFail(){
     int x = 23;
     int y = -24;
     int z = 34;
-    InitList((compare) compare_int32_t);
+    listHolder = InitList((compare) compare_int32_t);
     Add(&i);
     Add(&x);
     Add(&y);
@@ -100,7 +100,7 @@ void TestIndexOfFail(){
 
 void TestWithRandomInsert(){
     int a = 10, b = 202, c = 192, d = 282, e = 231, f = 12, g = 45;
-    InitList((compare) compare_int32_t);
+    listHolder = InitList((compare) compare_int32_t);
     Add(&a);
     Add(&b);
     Add(&c);
@@ -126,7 +126,7 @@ void InsertBeforeTest(){
     int x = randomInt();
     int y = randomInt();
     int z = randomInt();
-    InitList(compare_int32_t);
+    listHolder = InitList(compare_int32_t);
     Add(&i);
     Add(&x);
     Add(&y);
@@ -144,7 +144,7 @@ void InsertAfterTest(){
     int x = 23;
     int y = -24;
     int z = 34;
-    InitList((compare) compare_int32_t);
+    listHolder = InitList((compare) compare_int32_t);
     Add(&i);
     Add(&x);
     Add(&y);
@@ -160,7 +160,7 @@ void removeTest(){
     int i = 10;
     int x = 23;
     int y = -24;
-    InitList((compare) compare_int32_t);
+    listHolder = InitList((compare) compare_int32_t);
     Add(&i);
     Add(&x);
     Add(&y);
@@ -179,7 +179,7 @@ void TestSort(){
     int y = -24;
     int z = -30;
     int a = 20;
-    InitList(compare_int32_t);
+    listHolder = InitList(compare_int32_t);
     Add(&i);
     Add(&x);
     Add(&y);
@@ -195,6 +195,12 @@ void TestSort(){
 }
 
 
+//_____________________________Main Test Entry Point_________________________________
 
+
+int RunAllTest(){
+    TestAddOne();
+    return 0;
+}
 
 

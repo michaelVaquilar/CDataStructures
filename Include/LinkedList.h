@@ -41,9 +41,9 @@ typedef struct LList{
  * Initializes our linked list so we have a memory location for it.
  * Using calloc so that the memory is already set to 0 instead of empty.
  * @param Compare compareable function for the list.
- * @return true if the memory was allocated, false otherwise.
+ * @return memory location of the list created, NULL if it failed to allocate memory.
  */
-bool InitList(compare Compare);
+LIST* InitList(compare Compare);
 
 /**
  * Adds a value to the linked list.

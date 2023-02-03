@@ -11,6 +11,7 @@
 #include <string.h>
 #include <assert.h>
 #include <stdbool.h>
+#include <stdlib.h>
 #include "../../Include/LinkedList.h"
 
 
@@ -22,13 +23,13 @@ void UpdateCount(){
     ourStack->Count = ourStack->list->count;
 }
 
-bool InitStack(compare Compare){
+STACK* InitStack(compare Compare){
     initialized = true;
-    ourStack = (STACK *)(1, sizeof(STACK));
+    ourStack = (STACK *)calloc(1, sizeof(STACK));
     if(ourStack == NULL || !InitList(Compare))
-        return false;
+        return NULL;
     ourStack->list = list;
-    return true;
+    return ourStack;
 }
 
 bool isEmpty(){
@@ -41,4 +42,9 @@ void *Pop(){
 
 bool Push(void *data) {
     return InsertNodeBeforeTarget(0, data);
+}
+
+void DestroyStack(){
+    DestroyList();
+    free(ourStack);
 }

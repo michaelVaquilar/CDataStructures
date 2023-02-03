@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <assert.h>
+#include <stdlib.h>
 #include <stdbool.h>
 #include "../../Include/LinkedList.h"
 
@@ -17,13 +18,13 @@ bool initialized = false; //tells us if the user initialized the list (allocatin
 extern QUEUE *ourQueue;
 LIST *list;
 
-bool InitQueue(compare Compare){
+QUEUE* InitQueue(compare Compare){
     initialized = true;
-    ourQueue = (QUEUE *)(1, sizeof(QUEUE));
+    ourQueue = (QUEUE *)calloc(1, sizeof(QUEUE));
     if(ourQueue == NULL || !InitList(Compare))
-        return false;
+        return NULL;
     ourQueue->list = list;
-    return true;
+    return ourQueue;
 }
 
 void Enqueue(void *item){
@@ -36,4 +37,9 @@ void* Dequeue(){
 
 bool isEmpty(){
     return ourQueue->Count <= 0;
+}
+
+void DestroyQueue(){
+    DestroyList();
+    free(ourQueue);
 }

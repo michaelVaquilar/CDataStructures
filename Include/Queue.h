@@ -26,9 +26,9 @@ typedef struct Queue{
 /**
  * Initializes our queue and allocates memory for the queue and list.
  * @param Compare a compare function for the generic data type.
- * @return true if intialized properly, false otherwise.
+ * @return pointer to the queue created, null if it couldn't be created.
  */
-bool InitQueue(compare Compare);
+QUEUE* InitQueue(compare Compare);
 
 /**
  * Add's an item to the end of the queue.
@@ -47,5 +47,10 @@ void* Dequeue();
  * @return true if empty, false otherwise.
  */
 bool isEmpty();
+
+/**
+ * Destroys the queue, aka freeing the memory
+ */
+void DestroyQueue();
 
 #endif //DATASTRUCTURES_QUEUE_H
