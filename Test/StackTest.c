@@ -77,7 +77,7 @@ void StackTestPopAll(){
 //_____________________________Main Test Entry Point_________________________________
 
 
-void RunAllQueueTest(){
+void RunAllStackTest(){
     printf("__________________Running Stack Test____________________");
     StackTestPushAndPop();
     StackTestPushPopMultipleValue();
