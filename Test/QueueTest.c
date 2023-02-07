@@ -9,58 +9,54 @@
 #include <stdio.h>
 #include "../Include/Queue.h"
 #include "../Include/Utility.h"
-
-QUEUE *ourQueue;
-
-
 //------------------------------------Add To List TEST------------------------------------
 
 void QueueTestPushAndPop(){
     int i = 10;
-    ourQueue = InitQueue((compare) compare_int32_t);
-    Enqueue(&i);
-    void *result = Dequeue();
+    QUEUE *ourQueue = InitQueue((compare) compare_int32_t);
+    Enqueue(ourQueue,&i);
+    void *result = Dequeue(ourQueue);
     TestQueue(ourQueue, &i, result, "Add One Value");
-    DestroyList();
+    DestroyQueue(ourQueue);
 }
 
 
 void QueueTestMultipleValue(){
     int a = 10, b = 202, c = 192, d = 282, e = 231, f = 12, g = 45;
-    ourQueue = InitQueue((compare) compare_int32_t);
-    Enqueue(&a);
-    Enqueue(&b);
-    Enqueue(&c);
-    Enqueue(&d);
-    Enqueue(&e);
-    Enqueue(&f);
-    Enqueue(&g);
-    Dequeue();
-    Dequeue();
-    Dequeue();
-    void *result =Dequeue();
+    QUEUE *ourQueue = InitQueue((compare) compare_int32_t);
+    Enqueue(ourQueue,&a);
+    Enqueue(ourQueue,&b);
+    Enqueue(ourQueue,&c);
+    Enqueue(ourQueue,&d);
+    Enqueue(ourQueue,&e);
+    Enqueue(ourQueue,&f);
+    Enqueue(ourQueue,&g);
+    Dequeue(ourQueue);
+    Dequeue(ourQueue);
+    Dequeue(ourQueue);
+    void *result =Dequeue(ourQueue);
     TestQueue(ourQueue, &d, result, "Add Multiple Values");
-    DestroyList();
+    DestroyQueue(ourQueue);
 }
 
 void QueueTestDequeueEmpty(){
-    ourQueue = InitQueue((compare) compare_int32_t);
-    void *result =Dequeue();
+    QUEUE *ourQueue = InitQueue((compare) compare_int32_t);
+    void *result =Dequeue(ourQueue);
     TestQueue(ourQueue, NULL, result, "Add Multiple Values");
-    DestroyList();
+    DestroyQueue(ourQueue);
 }
 
 void QueueTestDequeueAll(){
     int a = 10, b = 202, c = 192, d = 282, e = 231, f = 12, g = 45;
-    ourQueue = InitQueue((compare) compare_int32_t);
-    Enqueue(&a);
-    Enqueue(&b);
-    Enqueue(&c);
-    Enqueue(&d);
-    Enqueue(&e);
-    Enqueue(&f);
-    Enqueue(&g);
-    Dequeue();
+    QUEUE *ourQueue = InitQueue((compare) compare_int32_t);
+    Enqueue(ourQueue,&a);
+    Enqueue(ourQueue,&b);
+    Enqueue(ourQueue,&c);
+    Enqueue(ourQueue,&d);
+    Enqueue(ourQueue,&e);
+    Enqueue(ourQueue,&f);
+    Enqueue(ourQueue,&g);
+    Dequeue(ourQueue);
     Dequeue();
     Dequeue();
     Dequeue();
@@ -69,7 +65,7 @@ void QueueTestDequeueAll(){
     Dequeue();
     void *result =Dequeue();
     TestQueue(ourQueue, NULL, result, "Add Multiple Values");
-    DestroyList();
+    DestroyQueue(ourQueue);
 }
 
 //_____________________________Main Test Entry Point_________________________________

@@ -8,11 +8,8 @@
 
 #include "../../Include/Queue.h"
 #include <stdio.h>
-#include <string.h>
-#include <assert.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "../../Include/LinkedList.h"
 
 bool initialized = false; //tells us if the user initialized the list (allocating the memory)
 LIST *list;
