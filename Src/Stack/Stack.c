@@ -16,7 +16,6 @@
 
 
 bool initialized = false;
-extern STACK *ourStack;
 LIST *list;
 
 void UpdateCount(){
@@ -29,6 +28,7 @@ STACK* InitStack(compare Compare){
     if(ourStack == NULL || !InitList(Compare))
         return NULL;
     ourStack->list = list;
+    ourStack->Count = 0;
     return ourStack;
 }
 
@@ -37,6 +37,7 @@ bool isEmpty(){
 }
 
 void *Pop(){
+    if(isEmpty()){ return NULL; }
     return RemoveByIndex(0);
 }
 

@@ -1,6 +1,6 @@
 #include "LinkedListTest.c"
 
-int main(void) {
+int TestAll(void) {
     printf("hello world");
     return 0;
 }

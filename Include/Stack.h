@@ -24,6 +24,11 @@ typedef struct Stack{
 }STACK;
 
 /**
+ * Our external stack pointer that the user creates and can access. This holds all the stacks data.
+ */
+extern STACK *ourStack;
+
+/**
  * Updates the count of the Stack.
  */
 void UpdateCount();

@@ -12,7 +12,6 @@
 #include <stdbool.h>
 
 bool initialized = false; //tells us if the user initialized the list (allocating the memory)
-extern LIST *list; //external holder for the list. The user must create this.
 
 LIST* InitList(compare Compare){
     initialized = true;
@@ -21,7 +20,8 @@ LIST* InitList(compare Compare){
         return NULL;
     }
     list->CompareTo = Compare;
-    return true;
+    list->count = 0;
+    return list;
 }
 
 NODE *GetHead(NODE *temp) {
@@ -69,6 +69,8 @@ void Add(void *value) {
 
 
 void *Get(int index){
+    if(list->count <= 0)
+        return NULL;
     NODE *curr = WalkToNode(list->head, index);
     return curr->value;
 }
@@ -145,6 +147,7 @@ bool InsertNodeAfterTarget(int index, void *newValue){
 
 
 bool UnlinkNodeByValue(void *value){
+    if(list->count <= 0){ return false; }
     if(list->CompareTo(list->head->value, value) == 0){
         list->head = list->head->next;
         list->head->previous = NULL;
@@ -246,6 +249,7 @@ NODE *MergeSort(NODE *start){
 }
 
 void SortList(){
+    if(list->count <= 0){ return; }
     MergeSort(list->head);
 }
 

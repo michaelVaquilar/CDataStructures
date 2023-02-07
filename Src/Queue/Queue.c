@@ -15,7 +15,6 @@
 #include "../../Include/LinkedList.h"
 
 bool initialized = false; //tells us if the user initialized the list (allocating the memory)
-extern QUEUE *ourQueue;
 LIST *list;
 
 QUEUE* InitQueue(compare Compare){
@@ -24,15 +23,23 @@ QUEUE* InitQueue(compare Compare){
     if(ourQueue == NULL || !InitList(Compare))
         return NULL;
     ourQueue->list = list;
+    ourQueue->Count = 0;
     return ourQueue;
 }
 
+
 void Enqueue(void *item){
     Add(item);
+    ourQueue->Count = ourQueue->list->count;
 }
 
 void* Dequeue(){
-    return RemoveByIndex(0);
+    if(isEmpty())
+        return NULL;
+    void *result = RemoveByIndex(0);
+    ourQueue->Count = ourQueue->list->count;
+    return result;
+
 }
 
 bool isEmpty(){

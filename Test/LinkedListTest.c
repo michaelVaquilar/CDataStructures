@@ -60,7 +60,7 @@ void TestWholeList(){
     int *result;
     result = ToArray(listHolder);
 
-    TestList(listHolder, &c, result, "Test Whole List As Array");
+    TestList(listHolder, expected, result, "Test Whole List As Array");
 }
 
 //------------------------------------INDEX OF TEST------------------------------------
@@ -107,11 +107,10 @@ void TestWithRandomInsert(){
     Add(&d);
     Add(&e);
     Add(&f);
-    Add(&g);
 
     int result = IndexOf(&d);
 
-    InsertNodeBeforeTarget(&d);
+    InsertNodeBeforeTarget(4,&g);
 
     result = IndexOf(&d);
     int expected = 5;
@@ -154,6 +153,21 @@ void InsertAfterTest(){
     DestroyList();
 }
 
+void InsertAfterTestTwo(){
+    int i = 10;
+    int x = 23;
+    int y = -24;
+    int z = 34;
+    listHolder = InitList((compare) compare_int32_t);
+    Add(&i);
+    Add(&x);
+    Add(&y);
+    InsertNodeAfterTarget(2,&z);
+    int *result = Get(2);
+    TestList(listHolder,&z, result, "Insert After Element Test Two");
+    DestroyList();
+}
+
 //------------------------------------REMOVE TEST------------------------------------
 
 void removeTest(){
@@ -171,26 +185,43 @@ void removeTest(){
     DestroyList();
 }
 
-//------------------------------------SORT TEST------------------------------------
-
-void TestSort(){
+void removeAllTest(){
     int i = 10;
     int x = 23;
     int y = -24;
-    int z = -30;
-    int a = 20;
-    listHolder = InitList(compare_int32_t);
+    listHolder = InitList((compare) compare_int32_t);
     Add(&i);
     Add(&x);
     Add(&y);
-    Add(&z);
-    Add(&a);
 
-    DumpList();
+    UnlinkNodeByValue(&x);
+    UnlinkNodeByValue(&i);
+    int *result = Get(0);
+    TestList(listHolder, &y, result, "Remove All Nodes Test");
+    DestroyList();
+}
+
+
+//------------------------------------SORT TEST------------------------------------
+
+void TestSort(){
+    int a = 10, b = 202, c = 192, d = 282, e = 231, f = 12, g = 45;
+    int expected[7] = {10,12,45,192,202,231,282};
+    listHolder = InitList(compare_int32_t);
+    Add(&a);
+    Add(&b);
+    Add(&c);
+    Add(&d);
+    Add(&e);
+    Add(&f);
+    Add(&g);
+
     SortList();
-    printf("second time.\n");
-    DumpList();
-    //Test(listHolder, &y, result, "Remove Node Test");
+
+    int *result;
+    result = ToArray(listHolder);
+
+    TestList(listHolder, expected, result, "Sort List Test");
     DestroyList();
 }
 
@@ -198,9 +229,21 @@ void TestSort(){
 //_____________________________Main Test Entry Point_________________________________
 
 
-int RunAllTest(){
+void RunAllListTest(){
+    printf("__________________Running List Test____________________");
     TestAddOne();
-    return 0;
+    TestMultipleValue();
+    TestWholeList();
+    TestIndexOf();
+    TestIndexOfFail();
+    TestWithRandomInsert();
+    InsertBeforeTest();
+    InsertAfterTest();
+    InsertAfterTestTwo();
+    removeTest();
+    removeAllTest();
+    TestSort();
+    printf("__________________List Test Finished____________________");
 }
 
 

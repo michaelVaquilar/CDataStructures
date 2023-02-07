@@ -24,6 +24,11 @@ typedef struct Queue{
 }QUEUE;
 
 /**
+ * our queue that can be accessed externally. Aka the queue the user creates.
+ */
+extern QUEUE *ourQueue;
+
+/**
  * Initializes our queue and allocates memory for the queue and list.
  * @param Compare a compare function for the generic data type.
  * @return pointer to the queue created, null if it couldn't be created.

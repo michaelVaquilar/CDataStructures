@@ -18,6 +18,8 @@
  */
 typedef int (*compare)(const void *,const void *);
 
+
+
 /**
  * Node structure to hold the value along with the next and previous nodes.
  */
@@ -36,6 +38,11 @@ typedef struct LList{
     int count;
     compare CompareTo;
 } LIST;
+
+/**
+ * external holder for the list. The user must create this.
+ */
+extern LIST *list;
 
 /**
  * Initializes our linked list so we have a memory location for it.
