@@ -8,10 +8,8 @@
 #include "LinkedListTest.c"
 #include "QueueTest.c"
 #include "StackTest.c"
+#include "../Include/TestRun.h"
 
-/**
- * Runs all our test.
- */
 void TestAll() {
     RunAllListTest();
     RunAllQueueTest();
