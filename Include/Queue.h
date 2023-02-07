@@ -24,11 +24,6 @@ typedef struct Queue{
 }QUEUE;
 
 /**
- * our queue that can be accessed externally. Aka the queue the user creates.
- */
-extern QUEUE *ourQueue;
-
-/**
  * Initializes our queue and allocates memory for the queue and list.
  * @param Compare a compare function for the generic data type.
  * @return pointer to the queue created, null if it couldn't be created.
@@ -37,25 +32,29 @@ QUEUE* InitQueue(compare Compare);
 
 /**
  * Add's an item to the end of the queue.
+ * @param ourQueue the queue to enqueue onto.
  * @param item void * item to add.
  */
-void Enqueue(void *item);
+void Enqueue(QUEUE *ourQueue,void *item);
 
 /**
  * Dequeues the item at the front of the list (removes the first item).
+ * @param ourQueue the queue to dequeue an item from.
  * @return the item removed.
  */
-void* Dequeue();
+void* Dequeue(QUEUE *ourQueue);
 
 /**
  * Checks if the queue is empty.
+ * @param ourQueue the queue to check if it is empty.
  * @return true if empty, false otherwise.
  */
-bool isEmpty();
+bool isEmpty(QUEUE *ourQueue);
 
 /**
  * Destroys the queue, aka freeing the memory
+ * @param ourQueue the queue to destroy.
  */
-void DestroyQueue();
+void DestroyQueue(QUEUE *ourQueue);
 
 #endif //DATASTRUCTURES_QUEUE_H

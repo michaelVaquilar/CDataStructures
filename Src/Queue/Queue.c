@@ -19,7 +19,7 @@ LIST *list;
 
 QUEUE* InitQueue(compare Compare){
     initialized = true;
-    ourQueue = (QUEUE *)calloc(1, sizeof(QUEUE));
+    QUEUE *ourQueue = (QUEUE *)calloc(1, sizeof(QUEUE));
     if(ourQueue == NULL || !InitList(Compare))
         return NULL;
     ourQueue->list = list;
@@ -28,25 +28,25 @@ QUEUE* InitQueue(compare Compare){
 }
 
 
-void Enqueue(void *item){
-    Add(item);
+void Enqueue(QUEUE *ourQueue,void *item){
+    Add(ourQueue->list, item);
     ourQueue->Count = ourQueue->list->count;
 }
 
-void* Dequeue(){
-    if(isEmpty())
+void* Dequeue(QUEUE *ourQueue){
+    if(isEmpty(ourQueue))
         return NULL;
-    void *result = RemoveByIndex(0);
+    void *result = RemoveByIndex(ourQueue->list, 0);
     ourQueue->Count = ourQueue->list->count;
     return result;
 
 }
 
-bool isEmpty(){
+bool isEmpty(QUEUE *ourQueue){
     return ourQueue->Count <= 0;
 }
 
-void DestroyQueue(){
-    DestroyList();
+void DestroyQueue(QUEUE *ourQueue){
+    DestroyList(ourQueue->list);
     free(ourQueue);
 }

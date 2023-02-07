@@ -24,11 +24,6 @@ typedef struct Stack{
 }STACK;
 
 /**
- * Our external stack pointer that the user creates and can access. This holds all the stacks data.
- */
-extern STACK *ourStack;
-
-/**
  * Updates the count of the Stack.
  */
 void UpdateCount();
@@ -42,26 +37,30 @@ STACK* InitStack(compare Compare);
 
 /**
  * Checks if the stack is empty.
+ * @param ourStack the stack to check if empty.
  * @return true if empty, false otherwise.
  */
-bool isEmpty();
+bool isEmpty(STACK *ourStack);
 
 /**
  * Pop's an item off the top of the stack.
+ * @param ourStack the stack to pop an item off of.
  * @return the generic pointer to the item popped off.
  */
-void *Pop();
+void *Pop(STACK *ourStack);
 
 /**
  * Pushes a generic pointer to an item onto the top of the stack.
+ * @param ourStack the stack to push onto.
  * @param data void pointer to the data to pop onto the stack.
  * @return true if the item was added onto the stack, false otherwise.
  */
-bool Push(void *data);
+bool Push(STACK *ourStack, void *data);
 
 /**
  * Destroys the stack, aka freeing the memory.
+ * @param ourStack the stack to destroy.
  */
-void DestroyStack();
+void DestroyStack(STACK *ourStack);
 
 #endif //DATASTRUCTURES_STACK_H

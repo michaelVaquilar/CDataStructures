@@ -15,7 +15,7 @@ bool initialized = false; //tells us if the user initialized the list (allocatin
 
 LIST* InitList(compare Compare){
     initialized = true;
-    list = calloc(1, sizeof(LIST));
+    LIST *list = calloc(1, sizeof(LIST));
     if(list == NULL){
         return NULL;
     }
@@ -41,7 +41,7 @@ NODE *GetTail(NODE *temp){
 }
 
 
-void Add(void *value) {
+void Add(LIST *list, void *value) {
     NODE *pList = malloc(sizeof(NODE));
     if(pList == NULL){
         return;
@@ -68,7 +68,7 @@ void Add(void *value) {
 }
 
 
-void *Get(int index){
+void *Get(LIST *list, int index){
     if(list->count <= 0)
         return NULL;
     NODE *curr = WalkToNode(list->head, index);
@@ -77,13 +77,13 @@ void *Get(int index){
 
 
 
-void DestroyList(){
+void DestroyList(LIST *list){
     if(!initialized){ return; }
     free(list);
 }
 
 
-void DumpList(){
+void DumpList(LIST *list){
     if(list->count <= 0){ return; }
     NODE *curr  = list->head;
     while(curr != NULL){
@@ -93,7 +93,7 @@ void DumpList(){
     }
 }
 
-int IndexOf(void *value){
+int IndexOf(LIST *list,void *value){
     if(list->count <= 0) { return -1;}
     NODE *curr  = list->head;
     int counter = 1;
@@ -107,7 +107,7 @@ int IndexOf(void *value){
 }
 
 
-bool InsertNodeBeforeTarget(int index, void *newValue){
+bool InsertNodeBeforeTarget(LIST *list, int index, void *newValue){
     if(list->count <= 0){
         return false;
     }
@@ -136,17 +136,14 @@ bool InsertNodeBeforeTarget(int index, void *newValue){
     return true;
 }
 
-
-bool InsertNodeAfterTarget(int index, void *newValue){
+bool InsertNodeAfterTarget(LIST *list, int index, void *newValue){
     if(list->count <= 0){
         return false;
     }
-    return InsertNodeBeforeTarget(index + 1, newValue);;
+    return InsertNodeBeforeTarget(list,index + 1, newValue);;
 }
 
-
-
-bool UnlinkNodeByValue(void *value){
+bool UnlinkNodeByValue(LIST *list, void *value){
     if(list->count <= 0){ return false; }
     if(list->CompareTo(list->head->value, value) == 0){
         list->head = list->head->next;
@@ -160,7 +157,7 @@ bool UnlinkNodeByValue(void *value){
         list->head = GetHead(list->tail);
         return true;
     }else{
-        int indexOfTarget = IndexOf(value);
+        int indexOfTarget = IndexOf(list,value);
 
         NODE *curr  = WalkToNode(list->head, indexOfTarget - 1);
 
@@ -171,12 +168,11 @@ bool UnlinkNodeByValue(void *value){
         list->tail = GetTail(curr);
         return true;
     }
-
 }
 
-void *RemoveByIndex(int index){
-    void *value = Get(index);
-    UnlinkNodeByValue(value);
+void *RemoveByIndex(LIST *list, int index){
+    void *value = Get(list, index);
+    UnlinkNodeByValue(list, value);
     return value;
 }
 
@@ -203,7 +199,7 @@ NODE *findMid(NODE *start){
     return slowTemp;
 }
 
-NODE *Sort(NODE *leftCursor, NODE *rightCursor){
+NODE *Sort(LIST *list, NODE *leftCursor, NODE *rightCursor){
     NODE *temp;
 
     if(leftCursor == NULL)
@@ -215,18 +211,18 @@ NODE *Sort(NODE *leftCursor, NODE *rightCursor){
     *pAlloc = list->CompareTo(leftCursor->value, rightCursor->value);
     if(*pAlloc < 0){
         temp = leftCursor;
-        temp->next = Sort(leftCursor->next, rightCursor);
+        temp->next = Sort(list,leftCursor->next, rightCursor);
         list->tail = temp->next;
     }
     else{
         temp = rightCursor;
-        temp->next = Sort(leftCursor, rightCursor->next);
+        temp->next = Sort(list,leftCursor, rightCursor->next);
         list->tail = temp->next;
     }
     return temp;
 }
 
-NODE *MergeSort(NODE *start){
+NODE *MergeSort(LIST *list, NODE *start){
     if(start == NULL || start->next == NULL)
         return start;
 
@@ -237,10 +233,10 @@ NODE *MergeSort(NODE *start){
     NODE *LHS = start;
     NODE *RHS = begOf2nd;
 
-    LHS = MergeSort(LHS);
-    RHS = MergeSort(RHS);
+    LHS = MergeSort(list,LHS);
+    RHS = MergeSort(list, RHS);
 
-    NODE *sorted = Sort(LHS, RHS);
+    NODE *sorted = Sort(list,LHS, RHS);
 
     list->head = sorted;
 
@@ -248,9 +244,9 @@ NODE *MergeSort(NODE *start){
 
 }
 
-void SortList(){
+void SortList(LIST *list){
     if(list->count <= 0){ return; }
-    MergeSort(list->head);
+    MergeSort(list,list->head);
 }
 
 

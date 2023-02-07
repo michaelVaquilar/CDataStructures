@@ -39,10 +39,6 @@ typedef struct LList{
     compare CompareTo;
 } LIST;
 
-/**
- * external holder for the list. The user must create this.
- */
-extern LIST *list;
 
 /**
  * Initializes our linked list so we have a memory location for it.
@@ -54,63 +50,72 @@ LIST* InitList(compare Compare);
 
 /**
  * Adds a value to the linked list.
- * @param value to be added
+ * @param list to Add too.
+ * @param value to be added.
  */
-void Add(void *value);
+void Add(LIST *list, void *value);
 
 /**
  * Gets the value at the specific index.
+ * @param list to search.
  * @param index to get value at.
  * @return the value at the index.
  */
-void *Get(int index);
+void *Get(LIST *list, int index);
 
 /**
  * Destroys the list aka get's rid of the memory location by freeing the allocated memory.
+ * @param list to destroy.
  */
-void DestroyList();
+void DestroyList(LIST *list);
 
 /**
  * Prints list to console line by line
+ * @param list to write to console
  */
-void DumpList();
+void DumpList(LIST *list);
 
 /**
  * Finds the index of a specific value.
+ * @param list to search.
  * @param value to look for.
  * @return int, the index of the value.
  */
-int IndexOf(void *value);
+int IndexOf(LIST *list,void *value);
 
 /**
  * Inserts a node (aka value) before a specific index.
+ * @param list to insert Node in.
  * @param index to insert new value at.
  * @param newValue new value to be inserted.
  * @return true if the node was successfully added, false otherwise.
  */
-bool InsertNodeBeforeTarget(int index, void *newValue);
+bool InsertNodeBeforeTarget(LIST *list, int index, void *newValue);
 
 /**
  * Inserts the new Node (aka value) after the specified index.
+ * @param list to insert Node in.
  * @param index to insert new value at.
  * @param newValue the new value to insert.
  * @return true if the node was successfully added, false otherwise.
  */
-bool InsertNodeAfterTarget(int index, void *newValue);
-
-/**
- * Removes a specific index.
- * @param index to remove
- * @return the data that was stored at the node that was removed.
- */
-void *RemoveByIndex(int index);
+bool InsertNodeAfterTarget(LIST *list, int index, void *newValue);
 
 /**
  * Removes a node by the specified value.
+ * @param list to unlink Node from.
  * @param value in the node we want to remove.
  * @return true if the node was removed, false otherwise.
  */
-bool UnlinkNodeByValue(void *value);
+bool UnlinkNodeByValue(LIST *list, void *value);
+
+/**
+ * Removes a specific index.
+ * @param list to remove value from.
+ * @param index to remove
+ * @return the data that was stored at the node that was removed.
+ */
+void *RemoveByIndex(LIST *list, int index);
 
 /**
  * Walks to an index inside a specific node.
@@ -129,22 +134,25 @@ NODE *findMid(NODE *start);
 
 /**
  * Sorts the two nodes given.
+ * @param list that the values are from.
  * @param leftCursor the left data value
  * @param rightCursor the right data value
  * @return new sorted node.
  */
-NODE *Sort(NODE *leftCursor, NODE *rightCursor);
+NODE *Sort(LIST *list, NODE *leftCursor, NODE *rightCursor);
 
 /**
  * Uses merge sort to sort the linkedlist in ascending order.
+ * @param list to sort.
  * @param start node
  * @return the new sorted node or list
  */
-NODE *MergeSort(NODE *start);
+NODE *MergeSort(LIST *list, NODE *start);
 
 /**
- * Calls MergeSort. Simple function for user to call.
+ * Calls MergeSort. Simple function for user to call
+ * @param list to sort.
  */
-void SortList();
+void SortList(LIST *list);
 
 #endif //DATASTRUCTURES_LINKEDLIST_H

@@ -18,34 +18,33 @@
 bool initialized = false;
 LIST *list;
 
-void UpdateCount(){
-    ourStack->Count = ourStack->list->count;
-}
-
 STACK* InitStack(compare Compare){
     initialized = true;
-    ourStack = (STACK *)calloc(1, sizeof(STACK));
-    if(ourStack == NULL || !InitList(Compare))
+    STACK *ourStack = (STACK *)calloc(1, sizeof(STACK));
+    list = InitList(Compare);
+    if(ourStack == NULL || list == NULL)
         return NULL;
     ourStack->list = list;
     ourStack->Count = 0;
     return ourStack;
 }
 
-bool isEmpty(){
+bool isEmpty(STACK *ourStack){
     return ourStack->Count <= 0;
 }
 
-void *Pop(){
-    if(isEmpty()){ return NULL; }
-    return RemoveByIndex(0);
+void *Pop(STACK *ourStack){
+    if(isEmpty(ourStack)){ return NULL; }
+    ourStack->Count = ourStack->list->count;
+    return RemoveByIndex(ourStack->list, 0);
 }
 
-bool Push(void *data) {
-    return InsertNodeBeforeTarget(0, data);
+bool Push(STACK *ourStack, void *data) {
+    ourStack->Count = ourStack->list->count;
+    return InsertNodeBeforeTarget(ourStack->list,0, data);
 }
 
-void DestroyStack(){
-    DestroyList();
+void DestroyStack(STACK *ourStack){
+    DestroyList(ourStack->list);
     free(ourStack);
 }
