@@ -39,7 +39,7 @@ void TestMultipleValue(){
     Add(listHolder,&g);
     int *result = Get(listHolder,2);
     TestList(listHolder, &c, result, "Add Multiple Values");
-    DestroyList(listHolder,);
+    DestroyList(listHolder);
 }
 
 

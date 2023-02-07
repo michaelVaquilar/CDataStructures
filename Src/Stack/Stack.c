@@ -25,12 +25,12 @@ STACK* InitStack(compare Compare){
     return ourStack;
 }
 
-bool isEmpty(STACK *ourStack){
+bool StackisEmpty(STACK *ourStack){
     return ourStack->Count <= 0;
 }
 
 void *Pop(STACK *ourStack){
-    if(isEmpty(ourStack)){ return NULL; }
+    if(StackisEmpty(ourStack)){ return NULL; }
     ourStack->Count = ourStack->list->count;
     return RemoveByIndex(ourStack->list, 0);
 }

@@ -40,7 +40,7 @@ STACK* InitStack(compare Compare);
  * @param ourStack the stack to check if empty.
  * @return true if empty, false otherwise.
  */
-bool isEmpty(STACK *ourStack);
+bool StackisEmpty(STACK *ourStack);
 
 /**
  * Pop's an item off the top of the stack.

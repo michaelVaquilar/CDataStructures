@@ -31,7 +31,7 @@ void Enqueue(QUEUE *ourQueue,void *item){
 }
 
 void* Dequeue(QUEUE *ourQueue){
-    if(isEmpty(ourQueue))
+    if(QueueisEmpty(ourQueue))
         return NULL;
     void *result = RemoveByIndex(ourQueue->list, 0);
     ourQueue->Count = ourQueue->list->count;
@@ -39,7 +39,7 @@ void* Dequeue(QUEUE *ourQueue){
 
 }
 
-bool isEmpty(QUEUE *ourQueue){
+bool QueueisEmpty(QUEUE *ourQueue){
     return ourQueue->Count <= 0;
 }
 

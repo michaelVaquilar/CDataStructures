@@ -57,13 +57,13 @@ void QueueTestDequeueAll(){
     Enqueue(ourQueue,&f);
     Enqueue(ourQueue,&g);
     Dequeue(ourQueue);
-    Dequeue();
-    Dequeue();
-    Dequeue();
-    Dequeue();
-    Dequeue();
-    Dequeue();
-    void *result =Dequeue();
+    Dequeue(ourQueue);
+    Dequeue(ourQueue);
+    Dequeue(ourQueue);
+    Dequeue(ourQueue);
+    Dequeue(ourQueue);
+    Dequeue(ourQueue);
+    void *result =Dequeue(ourQueue);
     TestQueue(ourQueue, NULL, result, "Add Multiple Values");
     DestroyQueue(ourQueue);
 }

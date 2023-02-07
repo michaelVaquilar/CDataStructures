@@ -49,7 +49,7 @@ void* Dequeue(QUEUE *ourQueue);
  * @param ourQueue the queue to check if it is empty.
  * @return true if empty, false otherwise.
  */
-bool isEmpty(QUEUE *ourQueue);
+bool QueueisEmpty(QUEUE *ourQueue);
 
 /**
  * Destroys the queue, aka freeing the memory
