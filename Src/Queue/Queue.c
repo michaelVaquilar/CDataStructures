@@ -11,13 +11,10 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-bool initialized = false; //tells us if the user initialized the list (allocating the memory)
-LIST *list;
-
 QUEUE* InitQueue(compare Compare){
-    initialized = true;
     QUEUE *ourQueue = (QUEUE *)calloc(1, sizeof(QUEUE));
-    if(ourQueue == NULL || !InitList(Compare))
+    LIST *list = InitList(Compare);
+    if(ourQueue == NULL || list == NULL)
         return NULL;
     ourQueue->list = list;
     ourQueue->Count = 0;

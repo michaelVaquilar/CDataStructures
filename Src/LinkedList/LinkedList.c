@@ -11,10 +11,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-bool initialized = false; //tells us if the user initialized the list (allocating the memory)
-
 LIST* InitList(compare Compare){
-    initialized = true;
     LIST *list = calloc(1, sizeof(LIST));
     if(list == NULL){
         return NULL;
@@ -49,10 +46,7 @@ void Add(LIST *list, void *value) {
     pList->value = value;
     pList->next = pList->previous = NULL;
 
-    if(!initialized){
-        return;
-    }
-    else if(list->count <= 0) {
+    if(list->count <= 0) {
         list->head = list->tail = pList;
     }
     else{
@@ -78,7 +72,6 @@ void *Get(LIST *list, int index){
 
 
 void DestroyList(LIST *list){
-    if(!initialized){ return; }
     free(list);
 }
 

@@ -11,13 +11,9 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-bool initialized = false;
-LIST *list;
-
 STACK* InitStack(compare Compare){
-    initialized = true;
     STACK *ourStack = (STACK *)calloc(1, sizeof(STACK));
-    list = InitList(Compare);
+    LIST *list = InitList(Compare);
     if(ourStack == NULL || list == NULL)
         return NULL;
     ourStack->list = list;

@@ -11,6 +11,7 @@
 #include <string.h>
 #include <assert.h>
 #include "../Include/Utility.h"
+#include <stdlib.h>
 
 
 
@@ -46,6 +47,7 @@ void TestMultipleValue(){
 void TestWholeList(){
     int a = 10, b = 202, c = 192, d = 282, e = 231, f = 12, g = 45;
     int expected[7] = {10,202,192,282,231,12,45};
+    int *pExected = &expected;
 
     LIST *listHolder = InitList((compare) compareIntArrays);
     Add(listHolder,&a);
@@ -56,10 +58,9 @@ void TestWholeList(){
     Add(listHolder,&f);
     Add(listHolder,&g);
 
-    int *result;
-    result = ToArray(listHolder);
+    int *result = ToArray(listHolder);
 
-    TestList(listHolder, expected, result, "Test Whole List As Array");
+    TestList(listHolder, pExected, result, "Test Whole List As Array");
 }
 
 //------------------------------------INDEX OF TEST------------------------------------

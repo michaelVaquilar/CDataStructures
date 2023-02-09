@@ -146,10 +146,11 @@ int randomInt(){
 }
 
 int * ToArray(LIST *listHolder){
-    int nodeArray[listHolder->count];
+    int *nodeArray = malloc(sizeof(int) * listHolder->count);
     NODE *curr  = listHolder->head;
     int counter = 0;
     while(curr != NULL){
+        nodeArray[counter] = (int) malloc(sizeof(int));
         nodeArray[counter] = (int) *curr->value;
         counter++;
         if(curr->next == NULL){break;}
