@@ -102,17 +102,7 @@ int compare_string(const void *element1, const void *element2)
 }
 
 int compareIntArrays(int a[], int b[]) {
-    size_t sizeOfA = sizeof(a)/sizeof(a[0]);
-    size_t sizeOfB = sizeof(b)/sizeof(b[0]);
-
-    if(sizeOfA != sizeOfB)
-        return 0;
-
-    for(int i = 0; i < sizeOfA; i++){
-        if(a[i] != b[i])
-            return 0;
-    }
-    return 1;
+   return memcmp(a, b, sizeof(a));
 }
 
 void TestList(LIST *listHolder, void *expected, void *actual, const char* testName){
@@ -146,11 +136,10 @@ int randomInt(){
 }
 
 int * ToArray(LIST *listHolder){
-    int *nodeArray = malloc(sizeof(int) * listHolder->count);
+    int nodeArray[listHolder->count];
     NODE *curr  = listHolder->head;
     int counter = 0;
     while(curr != NULL){
-        nodeArray[counter] = (int) malloc(sizeof(int));
         nodeArray[counter] = (int) *curr->value;
         counter++;
         if(curr->next == NULL){break;}

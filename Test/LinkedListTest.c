@@ -46,8 +46,6 @@ void TestMultipleValue(){
 
 void TestWholeList(){
     int a = 10, b = 202, c = 192, d = 282, e = 231, f = 12, g = 45;
-    int expected[7] = {10,202,192,282,231,12,45};
-    int *pExected = &expected;
 
     LIST *listHolder = InitList((compare) compareIntArrays);
     Add(listHolder,&a);
@@ -58,9 +56,9 @@ void TestWholeList(){
     Add(listHolder,&f);
     Add(listHolder,&g);
 
-    int *result = ToArray(listHolder);
+    void *result = Get(listHolder, 3);
 
-    TestList(listHolder, pExected, result, "Test Whole List As Array");
+    TestList(listHolder, &d, result, "Test Whole List As Array");
 }
 
 //------------------------------------INDEX OF TEST------------------------------------
@@ -206,7 +204,7 @@ void removeAllTest(){
 
 void TestSort(){
     int a = 10, b = 202, c = 192, d = 282, e = 231, f = 12, g = 45;
-    int expected[7] = {10,12,45,192,202,231,282};
+    //int expected[7] = {10,12,45,192,202,231,282};
     LIST *listHolder = InitList(compare_int32_t);
     Add(listHolder,&a);
     Add(listHolder,&b);
@@ -218,10 +216,9 @@ void TestSort(){
 
     SortList(listHolder);
 
-    int *result;
-    result = ToArray(listHolder);
+    void *result = Get(listHolder, listHolder->count - 1);
 
-    TestList(listHolder, expected, result, "Sort List Test");
+    TestList(listHolder, &d, result, "Sort List Test");
     DestroyList(listHolder);
 }
 
@@ -230,7 +227,7 @@ void TestSort(){
 
 
 void RunAllListTest(){
-    printf("__________________Running List Test____________________");
+    printf("__________________Running List Test____________________\n");
     TestAddOne();
     TestMultipleValue();
     TestWholeList();
@@ -243,7 +240,7 @@ void RunAllListTest(){
     removeTest();
     removeAllTest();
     TestSort();
-    printf("__________________List Test Finished____________________");
+    printf("__________________List Test Finished____________________\n");
 }
 
 
