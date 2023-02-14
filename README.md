@@ -17,8 +17,7 @@ The queue data structure is similar to, but opposite of, a stack. It operates in
 # What Data Type?
 This library is done with a void pointer data type to make the structures generic. The reason we use a void pointer is because C does not have a generic data type. By using the void pointer, this pointer can point to any type of data.
 ## Documentation
-Below is a link to a pdf with all the documentation for our library. The PDF was generated using DoxyGen with our header file comments.
-[Documentation](https://github.com/tensign1444/CDataStructures/blob/master/Documentation/DataStructuresDocumentation.pdf)
+A [PDF](https://github.com/tensign1444/CDataStructures/blob/master/Documentation/DataStructuresDocumentation.pdf) with all the documentation for our library. The PDF was generated using DoxyGen with our header file comments.
 
 ## Installation
 Below is one method of installation using Cmake.
