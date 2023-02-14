@@ -20,7 +20,6 @@ This library is done with a void pointer data type to make the structures generi
 
 [Documentation](https://github.com/tensign1444/CDataStructures/blob/master/Documentation/DataStructuresDocumentation.pdf)
 
-
 ## Installation
 Below is one method of installation using Cmake.
 1. Download [source code](https://github.com/tensign1444/CDataStructures/releases/tag/1.0.0)
