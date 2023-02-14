@@ -15,16 +15,28 @@ A stack is a Last In First Out (LIFO) data structure that uses the Push and Pop 
 The queue data structure is similar to, but opposite of, a stack. It operates in a First In First Out (FIFO) order and uses Enqueue and Dequeue operations to add and remove data. We use our Linked List Library to implement our Queue.
 
 # What Data Type?
-This library is done with a void pointer data type to make the structures generic.
+This library is done with a void pointer data type to make the structures generic. The reason we use a void pointer is because C does not have a generic data type. By using the void pointer, this pointer can point to any type of data.
 ## Documentation
 
 [Documentation](https://github.com/tensign1444/CDataStructures/blob/master/Documentation/DataStructuresDocumentation.pdf)
 
 
 ## Installation
+Below is one method of installation using Cmake.
+1.) Download [source code](https://github.com/tensign1444/CDataStructures/releases/tag/1.0.0)
+2.) Add into project directory.
+3.) Inside your `CMakeLists.txt' add 
+```
+//This sets a variable named SOURCE_FILES to the location of our source files. If your file directory is different then just adjust to fit your machine.
+set(SOURCE_FILES Src/LinkedList/LinkedList.c Util/Utility.c Src/Queue/Queue.c Src/Stack/Stack.c Test/TestRun.c Test/LinkedListTest.c Test/StackTest.c Test/StackTest.c)
 
-Add the Include folder to external libraries in your IDE.
+add_library(DataStructures ${SOURCE_FILES}) //creates the library
 
+add_executable({Your name of Executable} {Your source files}) //creates the executable
+
+target_link_libraries({Your name of Executable} PRIVATE DataStructures) // this tells CMake to link the executable and library
+```
+4.) Run your exe.
     
 ## Authors
 
