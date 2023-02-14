@@ -36,14 +36,14 @@ target_link_libraries({Your name of Executable} PRIVATE DataStructures) // this 
 ```
 4. Run your exe.
     
-# Authors
+## Authors
 
 - [@tensign1444](https://github.com/tensign1444)
 - [@michaelVaquilar](https://github.com/michaelVaquilar)
 - [@Masa-dotcom](https://github.com/Masa-dotcom)
 
 
-# Feedback
+## Feedback
 
 If you have any feedback, please create an [Issue](https://github.com/tensign1444/CDataStructures/issues).
 
