@@ -23,7 +23,7 @@ void TestAddOne(){
     LIST *listHolder = InitList((compare) compare_int32_t);
     Add(listHolder,&i);
     void *result = Get(listHolder,0);
-    TestList(listHolder, p, result, "Add One Value");
+    TestList(listHolder, p, result, "Add One Value", false);
     DestroyList(listHolder);
 }
 
@@ -39,7 +39,7 @@ void TestMultipleValue(){
     Add(listHolder,&f);
     Add(listHolder,&g);
     int *result = Get(listHolder,2);
-    TestList(listHolder, &c, result, "Add Multiple Values");
+    TestList(listHolder, &c, result, "Add Multiple Values",false);
     DestroyList(listHolder);
 }
 
@@ -58,16 +58,16 @@ void TestWholeList(){
 
     void *result = Get(listHolder, 3);
 
-    TestList(listHolder, &d, result, "Test Whole List As Array");
+    TestList(listHolder, &d, result, "Test Whole List As Array", false);
 }
 
 //------------------------------------INDEX OF TEST------------------------------------
 
 void TestIndexOf(){
-    int i = randomInt();
-    int x = randomInt();
-    int y = randomInt();
-    int z = randomInt();
+    int i = 211;
+    int x = 212;
+    int y = 34;
+    int z = 23;
     LIST *listHolder = InitList((compare) compare_int32_t);
     Add(listHolder,&i);
     Add(listHolder,&x);
@@ -76,7 +76,7 @@ void TestIndexOf(){
     int three = 3;
     int *thr = &three;
     int result = IndexOf(listHolder,&y);
-    TestList(listHolder, thr, &result, "IndexOf Included int");
+    TestList(listHolder, thr, &result, "IndexOf Included int", false);
     DestroyList(listHolder);
 }
 
@@ -92,7 +92,7 @@ void TestIndexOfFail(){
     //[10,23,-24,34]
     int result = IndexOf(listHolder,&z);
     int expected = -1;
-    TestList(listHolder,&expected, &result, "IndexOf Fail int");
+    TestList(listHolder,&expected, &result, "IndexOf Fail int",false);
     DestroyList(listHolder);
 }
 
@@ -112,7 +112,7 @@ void TestWithRandomInsert(){
 
     result = IndexOf(listHolder,&d);
     int expected = 5;
-    TestList(listHolder, &expected, &result, "Add Multiple Values");
+    TestList(listHolder, &expected, &result, "Add Multiple Values", false);
     DestroyList(listHolder);
 }
 
@@ -130,7 +130,7 @@ void InsertBeforeTest(){
 
     InsertNodeBeforeTarget(listHolder,1,&z);
     int *result = Get(listHolder,0);
-    TestList(listHolder,&z, result, "Inserted Before Element Test");
+    TestList(listHolder,&z, result, "Inserted Before Element Test", false);
     DestroyList(listHolder);
 }
 
@@ -147,7 +147,7 @@ void InsertAfterTest(){
     Add(listHolder,&y);
     InsertNodeAfterTarget(listHolder,1,&z);
     int *result = Get(listHolder,1);
-    TestList(listHolder,&z, result, "Insert After Element Test");
+    TestList(listHolder,&z, result, "Insert After Element Test", false);
     DestroyList(listHolder);
 }
 
@@ -162,7 +162,7 @@ void InsertAfterTestTwo(){
     Add(listHolder,&y);
     InsertNodeAfterTarget(listHolder,2,&z);
     int *result = Get(listHolder,2);
-    TestList(listHolder,&z, result, "Insert After Element Test Two");
+    TestList(listHolder,&z, result, "Insert After Element Test Two", false);
     DestroyList(listHolder);
 }
 
@@ -179,7 +179,7 @@ void removeTest(){
 
     UnlinkNodeByValue(listHolder,&x);
     int *result = Get(listHolder,1);
-    TestList(listHolder, &y, result, "Remove Node Test");
+    TestList(listHolder, &y, result, "Remove Node Test", false);
     DestroyList(listHolder);
 }
 
@@ -195,7 +195,7 @@ void removeAllTest(){
     UnlinkNodeByValue(listHolder,&x);
     UnlinkNodeByValue(listHolder,&i);
     int *result = Get(listHolder,0);
-    TestList(listHolder, &y, result, "Remove All Nodes Test");
+    TestList(listHolder, &y, result, "Remove All Nodes Test", false);
     DestroyList(listHolder);
 }
 
@@ -218,7 +218,7 @@ void TestSort(){
 
     void *result = Get(listHolder, listHolder->count - 1);
 
-    TestList(listHolder, &d, result, "Sort List Test");
+    TestList(listHolder, &d, result, "Sort List Test", false);
     DestroyList(listHolder);
 }
 

@@ -27,13 +27,14 @@ bool StackisEmpty(STACK *ourStack){
 
 void *Pop(STACK *ourStack){
     if(StackisEmpty(ourStack)){ return NULL; }
+    void *temp = RemoveByIndex(ourStack->list,0);
     ourStack->Count = ourStack->list->count;
-    return RemoveByIndex(ourStack->list, 0);
+    return temp;
 }
 
-bool Push(STACK *ourStack, void *data) {
+void Push(STACK *ourStack, void *data) {
+    InsertNodeBeforeTarget(ourStack->list,1, data);
     ourStack->Count = ourStack->list->count;
-    return InsertNodeBeforeTarget(ourStack->list,0, data);
 }
 
 void DestroyStack(STACK *ourStack){

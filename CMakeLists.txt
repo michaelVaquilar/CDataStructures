@@ -7,4 +7,8 @@ set(SOURCE_FILES Src/LinkedList/LinkedList.c Util/Utility.c Src/Queue/Queue.c Sr
 
 add_library(DataStructures ${SOURCE_FILES})
 
+add_executable(DataStructuresTest Test/main.c)
+
+target_link_libraries(DataStructuresTest PRIVATE DataStructures)
+
 

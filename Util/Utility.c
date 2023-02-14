@@ -105,24 +105,27 @@ int compareIntArrays(int a[], int b[]) {
    return memcmp(a, b, sizeof(a));
 }
 
-void TestList(LIST *listHolder, void *expected, void *actual, const char* testName){
-    if(listHolder->CompareTo(expected, actual) == 0){
+void TestList(LIST *listHolder, void *expected, void *actual, const char* testName, bool isNULL){
+    if(isNULL && expected == NULL && actual == NULL){ printf("%s : PASSED\n", testName); }
+    else if(listHolder->CompareTo(expected, actual) == 0){
         printf("%s : PASSED\n", testName);
     }else {
         printf("%s : FAILED expected: %d actual: %d\n", testName, expected, actual);
     }
 }
 
-void TestQueue(QUEUE *queue, void *expected, void *actual, const char* testName){
-    if(queue->list->CompareTo(expected, actual) == 0){
+void TestQueue(QUEUE *queue, void *expected, void *actual, const char* testName, bool isNULL){
+    if(isNULL && expected == NULL && actual == NULL){ printf("%s : PASSED\n", testName); }
+    else if(queue->list->CompareTo(expected, actual) == 0){
         printf("%s : PASSED\n", testName);
     }else {
         printf("%s : FAILED expected: %d actual: %d\n", testName, expected, actual);
     }
 }
 
-void TestStack(STACK *stack, void *expected, void *actual, const char* testName){
-    if(stack->list->CompareTo(expected, actual) == 0){
+void TestStack(STACK *stack, void *expected, void *actual, const char* testName, bool isNULL){
+    if(isNULL && expected == NULL && actual == NULL){ printf("%s : PASSED\n", testName); }
+    else if(stack->list->CompareTo(expected, actual) == 0){
         printf("%s : PASSED\n", testName);
     }else {
         printf("%s : FAILED expected: %d actual: %d\n", testName, expected, actual);

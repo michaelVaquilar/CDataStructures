@@ -16,7 +16,7 @@ void StackTestPushAndPop(){
     STACK *ourStack = InitStack((compare) compare_int32_t);
     Push(ourStack,&i);
     void *result = Pop(ourStack);
-    TestStack(ourStack, &i, result, "Push and Pop Once Test");
+    TestStack(ourStack, &i, result, "Push and Pop Once Test", false);
     DestroyStack(ourStack);
 }
 
@@ -35,14 +35,14 @@ void StackTestPushPopMultipleValue(){
     Pop(ourStack);
     Pop(ourStack);
     void *result =Pop(ourStack);
-    TestStack(ourStack, &d, result, "Push and Pop Multiple Values Test");
+    TestStack(ourStack, &d, result, "Push and Pop Multiple Values Test", false);
     DestroyStack(ourStack);
 }
 
 void StackTestPopEmpty(){
     STACK *ourStack = InitStack((compare) compare_int32_t);
     void *result =Pop(ourStack);
-    TestStack(ourStack, NULL, result, "Stack Pop Empty Stack Test");
+    TestStack(ourStack, NULL, result, "Stack Pop Empty Stack Test", true);
     DestroyStack(ourStack);
 }
 
@@ -64,7 +64,7 @@ void StackTestPopAll(){
     Pop(ourStack);
     Pop(ourStack);
     void *result =Pop(ourStack);
-    TestStack(ourStack, NULL, result, "Stack Pop All Values Test");
+    TestStack(ourStack, NULL, result, "Stack Pop All Values Test", true);
     DestroyStack(ourStack);
 }
 
@@ -72,10 +72,10 @@ void StackTestPopAll(){
 
 
 void RunAllStackTest(){
-    printf("__________________Running Stack Test____________________");
+    printf("__________________Running Stack Test____________________\n");
     StackTestPushAndPop();
     StackTestPushPopMultipleValue();
     StackTestPopEmpty();
     StackTestPopAll();
-    printf("__________________Stack Test Finished____________________");
+    printf("__________________Stack Test Finished____________________\n");
 }

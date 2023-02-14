@@ -16,7 +16,7 @@ void QueueTestPushAndPop(){
     QUEUE *ourQueue = InitQueue((compare) compare_int32_t);
     Enqueue(ourQueue,&i);
     void *result = Dequeue(ourQueue);
-    TestQueue(ourQueue, &i, result, "Add One Value");
+    TestQueue(ourQueue, &i, result, "Add One Value", false);
     DestroyQueue(ourQueue);
 }
 
@@ -35,14 +35,14 @@ void QueueTestMultipleValue(){
     Dequeue(ourQueue);
     Dequeue(ourQueue);
     void *result =Dequeue(ourQueue);
-    TestQueue(ourQueue, &d, result, "Add Multiple Values");
+    TestQueue(ourQueue, &d, result, "Add Multiple Values", false);
     DestroyQueue(ourQueue);
 }
 
 void QueueTestDequeueEmpty(){
     QUEUE *ourQueue = InitQueue((compare) compare_int32_t);
     void *result =Dequeue(ourQueue);
-    TestQueue(ourQueue, NULL, result, "Add Multiple Values");
+    TestQueue(ourQueue, NULL, result, "Dequeue Empty Queue", true);
     DestroyQueue(ourQueue);
 }
 
@@ -64,7 +64,7 @@ void QueueTestDequeueAll(){
     Dequeue(ourQueue);
     Dequeue(ourQueue);
     void *result =Dequeue(ourQueue);
-    TestQueue(ourQueue, NULL, result, "Add Multiple Values");
+    TestQueue(ourQueue, NULL, result, "Dequeue All Values", true);
     DestroyQueue(ourQueue);
 }
 
@@ -72,10 +72,10 @@ void QueueTestDequeueAll(){
 
 
 void RunAllQueueTest(){
-    printf("__________________Running Queue Test____________________");
+    printf("__________________Running Queue Test____________________\n");
     QueueTestPushAndPop();
     QueueTestMultipleValue();
     QueueTestDequeueEmpty();
     QueueTestDequeueAll();
-    printf("__________________Queue Test Finished____________________");
+    printf("__________________Queue Test Finished____________________\n");
 }

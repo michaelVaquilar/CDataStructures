@@ -53,9 +53,8 @@ void *Pop(STACK *ourStack);
  * Pushes a generic pointer to an item onto the top of the stack.
  * @param ourStack the stack to push onto.
  * @param data void pointer to the data to pop onto the stack.
- * @return true if the item was added onto the stack, false otherwise.
  */
-bool Push(STACK *ourStack, void *data);
+void Push(STACK *ourStack, void *data);
 
 /**
  * Destroys the stack, aka freeing the memory.

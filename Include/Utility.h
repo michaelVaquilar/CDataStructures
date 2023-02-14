@@ -83,8 +83,9 @@ int compareIntArrays(int a[], int b[]);
  * @param expected output
  * @param actual output
  * @param testName name of the test
+ * @param isNULL check if actual and expected both should be NULL
  */
-void TestList(LIST *listHolder, void *expected, void *actual, const char* testName);
+void TestList(LIST *listHolder, void *expected, void *actual, const char* testName, bool isNULL);
 
 /**
  * Small method for a list Queue test, checks if two objects are equal, if so they passed.
@@ -92,8 +93,9 @@ void TestList(LIST *listHolder, void *expected, void *actual, const char* testNa
  * @param expected output
  * @param actual output
  * @param testName name of the test
+ * @param isNULL check if actual and expected both should be NULL
  */
-void TestQueue(QUEUE *queue, void *expected, void *actual, const char* testName);
+void TestQueue(QUEUE *queue, void *expected, void *actual, const char* testName, bool isNULL);
 
 /**
  * Small method for a Stack unit test, checks if two objects are equal, if so they passed.
@@ -101,8 +103,9 @@ void TestQueue(QUEUE *queue, void *expected, void *actual, const char* testName)
  * @param expected output
  * @param actual output
  * @param testName name of the test
+ * @param isNULL check if actual and expected both should be NULL
  */
-void TestStack(STACK *stack, void *expected, void *actual, const char* testName);
+void TestStack(STACK *stack, void *expected, void *actual, const char* testName, bool isNULL);
 
 /**
  * Generates a random 32 bit int.

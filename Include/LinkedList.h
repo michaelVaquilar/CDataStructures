@@ -88,18 +88,16 @@ int IndexOf(LIST *list,void *value);
  * @param list to insert Node in.
  * @param index to insert new value at.
  * @param newValue new value to be inserted.
- * @return true if the node was successfully added, false otherwise.
  */
-bool InsertNodeBeforeTarget(LIST *list, int index, void *newValue);
+void InsertNodeBeforeTarget(LIST *list, int index, void *newValue);
 
 /**
  * Inserts the new Node (aka value) after the specified index.
  * @param list to insert Node in.
  * @param index to insert new value at.
  * @param newValue the new value to insert.
- * @return true if the node was successfully added, false otherwise.
  */
-bool InsertNodeAfterTarget(LIST *list, int index, void *newValue);
+void InsertNodeAfterTarget(LIST *list, int index, void *newValue);
 
 /**
  * Removes a node by the specified value.

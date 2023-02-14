@@ -100,9 +100,10 @@ int IndexOf(LIST *list,void *value){
 }
 
 
-bool InsertNodeBeforeTarget(LIST *list, int index, void *newValue){
+void InsertNodeBeforeTarget(LIST *list, int index, void *newValue){
     if(list->count <= 0){
-        return false;
+        Add(list, newValue);
+        return;
     }
     else if(index == 1){
         NODE* temp = malloc(sizeof(NODE));
@@ -126,28 +127,30 @@ bool InsertNodeBeforeTarget(LIST *list, int index, void *newValue){
         list->tail = GetTail(temp);
     }
     list->count++;
-    return true;
 }
 
-bool InsertNodeAfterTarget(LIST *list, int index, void *newValue){
+void InsertNodeAfterTarget(LIST *list, int index, void *newValue){
     if(list->count <= 0){
-        return false;
+        return;
     }
-    return InsertNodeBeforeTarget(list,index + 1, newValue);;
+    InsertNodeBeforeTarget(list,index + 1, newValue);
 }
 
 bool UnlinkNodeByValue(LIST *list, void *value){
     if(list->count <= 0){ return false; }
-    if(list->CompareTo(list->head->value, value) == 0){
+    else if(list->count == 1){list->head = NULL; list->tail = NULL; list->count--; true;}
+    else if(list->CompareTo(list->head->value, value) == 0){
+        list->head->next->previous = NULL;
         list->head = list->head->next;
-        list->head->previous = NULL;
         list->tail = GetTail(list->head);
+        list->count--;
         return true;
     }
     else if(list->CompareTo(list->tail->value, value) == 0){
+        list->tail->previous->next = NULL;
         list->tail = list->tail->previous;
-        list->tail->next = NULL;
         list->head = GetHead(list->tail);
+        list->count--;
         return true;
     }else{
         int indexOfTarget = IndexOf(list,value);
@@ -159,6 +162,7 @@ bool UnlinkNodeByValue(LIST *list, void *value){
         curr = curr->next;
         list->head = GetHead(curr);
         list->tail = GetTail(curr);
+        list->count--;
         return true;
     }
 }
