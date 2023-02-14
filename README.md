@@ -1,5 +1,5 @@
 
-# Data Structure Library
+## Data Structure Library
 
 This is a small data structure library written in C. A data structure is a storage that is used to store and organize data. It is a way of arranging data on a computer so that it can be accessed and updated efficiently.[1](https://www.geeksforgeeks.org/data-structures/) The library includes a doubly linked-list, Queue, and Stack along with test cases for each.
 
@@ -19,7 +19,7 @@ This library is done with a void pointer data type to make the structures generi
 ## Documentation
 A [PDF](https://github.com/tensign1444/CDataStructures/blob/master/Documentation/DataStructuresDocumentation.pdf) with all the documentation for our library. The PDF was generated using DoxyGen with our header file comments.
 
-## Installation
+# Installation
 Below is one method of installation using Cmake.
 1. Download [source code](https://github.com/tensign1444/CDataStructures/releases/tag/1.0.0)
 2. Add into project directory.
@@ -36,14 +36,14 @@ target_link_libraries({Your name of Executable} PRIVATE DataStructures) // this 
 ```
 4. Run your exe.
     
-## Authors
+# Authors
 
 - [@tensign1444](https://github.com/tensign1444)
 - [@michaelVaquilar](https://github.com/michaelVaquilar)
 - [@Masa-dotcom](https://github.com/Masa-dotcom)
 
 
-## Feedback
+# Feedback
 
 If you have any feedback, please create an [Issue](https://github.com/tensign1444/CDataStructures/issues).
 
