@@ -23,9 +23,9 @@ This library is done with a void pointer data type to make the structures generi
 
 ## Installation
 Below is one method of installation using Cmake.
-1.) Download [source code](https://github.com/tensign1444/CDataStructures/releases/tag/1.0.0)
-2.) Add into project directory.
-3.) Inside your `CMakeLists.txt' add 
+1. Download [source code](https://github.com/tensign1444/CDataStructures/releases/tag/1.0.0)
+2. Add into project directory.
+3. Inside your `CMakeLists.txt' add 
 ```
 //This sets a variable named SOURCE_FILES to the location of our source files. If your file directory is different then just adjust to fit your machine.
 set(SOURCE_FILES Src/LinkedList/LinkedList.c Util/Utility.c Src/Queue/Queue.c Src/Stack/Stack.c Test/TestRun.c Test/LinkedListTest.c Test/StackTest.c Test/StackTest.c)
@@ -36,7 +36,7 @@ add_executable({Your name of Executable} {Your source files}) //creates the exec
 
 target_link_libraries({Your name of Executable} PRIVATE DataStructures) // this tells CMake to link the executable and library
 ```
-4.) Run your exe.
+4. Run your exe.
     
 ## Authors
 
