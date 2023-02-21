@@ -50,6 +50,14 @@ bool StackisEmpty(STACK *ourStack);
 void *Pop(STACK *ourStack);
 
 /**
+ * Gives the user the item at the top off the stack
+ * without removing the item.
+ * @param ourStack the stack to peek into
+ * @return the value at the top of the stack.
+ */
+void *Peek(STACK *ourStack);
+
+/**
  * Pushes a generic pointer to an item onto the top of the stack.
  * @param ourStack the stack to push onto.
  * @param data void pointer to the data to pop onto the stack.

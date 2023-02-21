@@ -32,6 +32,11 @@ void *Pop(STACK *ourStack){
     return temp;
 }
 
+void *Peek(STACK *ourStack){
+    if(StackisEmpty(ourStack)){ return NULL; }
+    return ourStack->list->head->value;
+}
+
 void Push(STACK *ourStack, void *data) {
     InsertNodeBeforeTarget(ourStack->list,1, data);
     ourStack->Count = ourStack->list->count;
