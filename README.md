@@ -24,7 +24,10 @@ A detailed [PDF](https://github.com/tensign1444/CDataStructures/blob/master/Docu
 Below is one method of installation using Cmake.
 1. Download [source code](https://github.com/tensign1444/CDataStructures/releases/tag/1.0.0)
 2. Add into project directory.
-3. Inside your `CMakeLists.txt' add 
+
+## Usage
+
+1. Inside `CMakeLists.txt` add
 ```
 //This sets a variable named SOURCE_FILES to the location of our source files. If your file directory is different then just adjust to fit your machine.
 set(SOURCE_FILES Src/LinkedList/LinkedList.c Util/Utility.c Src/Queue/Queue.c Src/Stack/Stack.c Test/TestRun.c Test/LinkedListTest.c Test/StackTest.c Test/StackTest.c)
@@ -35,7 +38,20 @@ add_executable({Your name of Executable} {Your source files}) //creates the exec
 
 target_link_libraries({Your name of Executable} PRIVATE DataStructures) // this tells CMake to link the executable and library
 ```
-4. Run your exe.
+2. Link the header file to your file. (Make sure the `include` folder is inside current directory.)
+```angular2html
+    #include "../../Include/LinkedList.h"
+    #include "../Include/Stack.h"
+    #include "../Include/Utility.h"
+    #include "../Include/Queue.h"
+```
+3. Create LinkedList, Queue or Stack.
+```angular2html
+    STACK *ourStack = InitStack((compare) compare_int32_t);
+    LIST *listHolder = InitList((compare) compare_int32_t);
+    QUEUE *ourQueue = InitQueue((compare) compare_int32_t);
+```
+4. Use structures as intended.
     
 ## Authors
 
